@@ -29,7 +29,8 @@ function AdminLogin() {
     setError('');
 
     try {
-      const res = await fetch('http://localhost:5000/api/admin/login', {
+      // This is the updated line
+      const res = await fetch('https://online-complaint-and-grievance-portal.onrender.com/api/admin/login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password })
@@ -38,9 +39,8 @@ function AdminLogin() {
       const data = await res.json();
       if (data.success) {
         localStorage.setItem('adminToken', data.token);
-        // Using a message box instead of alert()
         console.log('Login successful');
-        navigate('/admindashboard'); // Redirect to the view complaints page for now
+        navigate('/admindashboard');
       } else {
         setError('Invalid email or password');
         setCaptchaText(generateCaptcha());
@@ -86,14 +86,14 @@ function AdminLogin() {
           />
         </div>
         <div style={{ marginBottom: '15px', display: 'flex', alignItems: 'center' }}>
-          <span 
-            style={{ 
-              background: '#f0f0f0', 
-              padding: '8px', 
-              borderRadius: '4px', 
-              marginRight: '10px', 
-              fontSize: '20px', 
-              fontFamily: 'monospace' 
+          <span
+            style={{
+              background: '#f0f0f0',
+              padding: '8px',
+              borderRadius: '4px',
+              marginRight: '10px',
+              fontSize: '20px',
+              fontFamily: 'monospace'
             }}
           >
             {captchaText}

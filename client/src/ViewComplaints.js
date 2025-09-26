@@ -1,4 +1,3 @@
-// In client/client/src/ViewComplaints.js
 import React, { useEffect, useState } from 'react';
 
 function ViewComplaints() {
@@ -7,7 +6,7 @@ function ViewComplaints() {
   useEffect(() => {
     const fetchComplaints = async () => {
       try {
-        // This is the updated line with the live server URL
+        // This is the updated line
         const res = await fetch("https://online-complaint-and-grievance-portal.onrender.com/api/complaints");
         const data = await res.json();
         setComplaints(data);
